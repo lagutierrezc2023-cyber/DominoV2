@@ -1,6 +1,6 @@
 package com.example.domino.data.repository
 
-import com.example.dominoconquest.data.model.GameState
+import com.example.domino.data.model.GameState
 
 
 interface GameRepository {

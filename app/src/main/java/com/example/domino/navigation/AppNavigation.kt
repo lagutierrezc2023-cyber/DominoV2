@@ -5,11 +5,11 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.dominoconquest.ui.screens.GameScreen
-import com.example.dominoconquest.ui.screens.LobbyScreen
-import com.example.dominoconquest.ui.screens.LoginScreen
-import com.example.dominoconquest.ui.screens.ResultScreen
-import com.example.dominoconquest.viewModel.LoginViewModel
+import com.example.domino.ui.screens.GameScreen
+import com.example.domino.ui.screens.LobbyScreen
+import com.example.domino.ui.screens.LoginScreen
+import com.example.domino.ui.screens.ResultScreen
+import com.example.domino.viewModel.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 

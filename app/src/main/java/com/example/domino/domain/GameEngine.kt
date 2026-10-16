@@ -1,10 +1,10 @@
 package com.example.domino.domain
 
-import com.example.dominoconquest.data.model.GameState
-import com.example.dominoconquest.data.model.Piece
-import com.example.dominoconquest.data.model.Player
-import com.example.dominoconquest.data.model.Territory
-import com.example.dominoconquest.data.model.TileEffect
+import com.example.domino.data.model.GameState
+import com.example.domino.data.model.Piece
+import com.example.domino.data.model.Player
+import com.example.domino.data.model.Territory
+import com.example.domino.data.model.TileEffect
 import kotlin.math.abs
 
 

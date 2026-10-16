@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.dominoconquest.data.model.Piece
+import com.example.domino.data.model.Piece
 
 @Composable
 fun PieceView(piece: Piece, isSelected: Boolean = false, onClick: () -> Unit = {}) {
