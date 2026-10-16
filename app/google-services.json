@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "36881279930",
+    "project_id": "dominoconquest-a1460",
+    "storage_bucket": "dominoconquest-a1460.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36881279930:android:b37635a8a8e4f4ed7ccb83",
+        "android_client_info": {
+          "package_name": "com.example.domino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChLM7WVcSRSEoLm8RP6jKRvTAw2x6EW1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
