@@ -1,4 +1,4 @@
-package com.example.dominoconquest.data.repository
+package com.example.domino.data.repository
 
 import com.example.dominoconquest.data.model.GameState
 

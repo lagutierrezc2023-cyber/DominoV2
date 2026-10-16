@@ -1,4 +1,4 @@
-package com.example.dominoconquest.data.model
+package com.example.domino.data.model
 
 
 class Territory(

@@ -1,4 +1,4 @@
-package com.example.dominoconquest.viewModel
+package com.example.domino.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

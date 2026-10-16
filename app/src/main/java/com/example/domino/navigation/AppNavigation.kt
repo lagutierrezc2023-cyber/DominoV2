@@ -1,4 +1,4 @@
-package com.example.dominoconquest.navigation
+package com.example.domino.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

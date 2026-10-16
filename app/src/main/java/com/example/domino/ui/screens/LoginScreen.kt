@@ -1,4 +1,4 @@
-package com.example.dominoconquest.ui.screens
+package com.example.domino.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

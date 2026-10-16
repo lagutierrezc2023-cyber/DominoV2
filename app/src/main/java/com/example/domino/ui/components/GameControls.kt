@@ -1,4 +1,4 @@
-package com.example.dominoconquest.ui.components
+package com.example.domino.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

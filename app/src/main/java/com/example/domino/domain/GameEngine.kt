@@ -1,4 +1,4 @@
-package com.example.dominoconquest.domain
+package com.example.domino.domain
 
 import com.example.dominoconquest.data.model.GameState
 import com.example.dominoconquest.data.model.Piece

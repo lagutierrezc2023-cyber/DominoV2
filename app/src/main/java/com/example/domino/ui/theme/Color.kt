@@ -1,4 +1,4 @@
-package com.example.dominoconquest.ui.theme
+package com.example.domino.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
