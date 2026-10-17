@@ -1,11 +1,20 @@
 package com.example.domino.data.model
 
 data class GameState(
-    val players: List<Player> = emptyList(),
-    val board: List<Territory> = emptyList(),
-    val pool: List<Piece> = emptyList(),
-    val currentPlayer: Int = 0,
-    val round: Int = 1,
+    var players: MutableList<Player> = mutableListOf(),
+    var board: MutableList<Territory> = mutableListOf(),
+    var pool: MutableList<Piece> = mutableListOf(),
+    var currentTurn: Int = 0,
+    var round: Int = 1,
     val maxRounds: Int = 20,
-    val finished: Boolean = false
-)
+    var status: String = "WAITING"
+) {
+    // Casilla en esa fila y columna y null si queda fuera del tablero
+    fun getTerritory(row: Int, col: Int): Territory? {
+        return board.find { it.row == row && it.col == col }
+    }
+
+    fun currentPlayer(): Player {
+        return players[currentTurn]
+    }
+}
