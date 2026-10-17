@@ -8,7 +8,7 @@ class TurnManager(private val engine: GameEngine) {
         return state.status == "PLAYING" && state.currentPlayer().id == playerId
     }
 
-    // Debe tomar ficha si es su turno y no tiene ninguna jugada 
+    // Debe tomar ficha si es su turno y no tiene ninguna jugada
     fun mustDraw(state: GameState, playerId: String): Boolean {
         return isMyTurn(state, playerId) && !engine.hasValidMove(state, state.currentPlayer())
     }
