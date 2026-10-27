@@ -55,7 +55,7 @@ class GameViewModel(
         _selectedPiece.value = piece
     }
 
-    // Elige hasta 2 casillas; la primera recibe el número izquierdo de la ficha
+    // Elige hasta 2 casillas la primera recibe el número izquierdo de la ficha
     fun selectCell(territory: Territory) {
         val index = territory.row * 5 + territory.col
         val cells = _selectedCells.value
