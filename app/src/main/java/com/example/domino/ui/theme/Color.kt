@@ -19,7 +19,7 @@ val PlayerYellow = Color(0xFFF2C94C)
 
 
 val TileBonus = Color(0xFF9B59B6)
-val TileTreasure = Color(0xFFFFD700)
+val TileTreasure = Color(0xFFB9770E)
 val TileTrap = Color(0xFFE74C3C)
 val TileFortress = Color(0xFF7F8C8D)
 val TilePortal = Color(0xFF1ABC9C)

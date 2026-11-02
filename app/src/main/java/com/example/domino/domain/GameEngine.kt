@@ -147,6 +147,19 @@ class GameEngine {
         return true
     }
 
+    fun boardHasSpace(state: GameState): Boolean {
+        for (t in state.board) {
+            if (canPlaceOn(t)) {
+                for (i in 0..3) {
+                    val neighbor = state.getTerritory(t.row + rowMoves[i], t.col + colMoves[i])
+                    if (neighbor != null && canPlaceOn(neighbor)) {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
     fun hasValidMove(state: GameState, player: Player): Boolean {
         for (piece in player.hand) {
             for (t in state.board) {

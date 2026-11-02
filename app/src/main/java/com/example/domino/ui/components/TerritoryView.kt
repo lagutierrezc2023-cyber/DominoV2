@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.domino.data.model.Territory
@@ -26,7 +27,8 @@ import com.example.domino.ui.theme.TileTreasure
 fun TerritoryView(
     territory: Territory,
     ownerColor: Color?,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    cellSize: Dp = 48.dp
 ) {
     var backgroundColor = tileEffectColor(territory.effect)
     if (ownerColor != null) {
@@ -35,27 +37,23 @@ fun TerritoryView(
 
     Box(
         modifier = Modifier
-            .size(48.dp)
-
+            .size(cellSize)
             .background(backgroundColor, RoundedCornerShape(8.dp))
             .clickable { onClick() },
         contentAlignment = Alignment.Center
-    )
-
-    {
+    ) {
         if (territory.isEmpty()) {
             if (territory.effect != TileEffect.NONE) {
                 Text(
-                    text= territory.effect.label,
-                    fontSize= 9.sp,
+                    text = territory.effect.label,
+                    fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-
                     color = Color.White
                 )
             }
         } else {
-            Text (
-                text= territory.number.toString(),
+            Text(
+                text = territory.number.toString(),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -73,8 +71,8 @@ fun TerritoryView(
     }
 }
 
- fun tileEffectColor(effect: TileEffect): Color {
-     if (effect == TileEffect.BONUS) {
+fun tileEffectColor(effect: TileEffect): Color {
+    if (effect == TileEffect.BONUS) {
         return TileBonus
     }
     if (effect == TileEffect.TREASURE) {
@@ -83,8 +81,8 @@ fun TerritoryView(
     if (effect == TileEffect.TRAP) {
         return TileTrap
     }
-     if ( effect == TileEffect.FORTRESS) {
-         return TileFortress
+    if (effect == TileEffect.FORTRESS) {
+        return TileFortress
     }
     if (effect == TileEffect.PORTAL) {
         return TilePortal
