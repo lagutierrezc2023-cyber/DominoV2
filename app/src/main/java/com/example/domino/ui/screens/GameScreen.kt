@@ -8,12 +8,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -36,9 +40,16 @@ fun GameScreen(
     val message by viewModel.message.collectAsState()
     val me = state.players.find { it.id == viewModel.myId }
 
+    var wasPlaying by remember { mutableStateOf(false) }
+
     LaunchedEffect(Unit) { viewModel.start(roomCode) }
     LaunchedEffect(state.status) {
-        if (state.status == "FINISHED") onGameOver()
+        if (state.status == "PLAYING") {
+            wasPlaying = true
+        }
+        if (state.status == "FINISHED" && wasPlaying) {
+            onGameOver()
+        }
     }
 
     Column(
@@ -48,27 +59,52 @@ fun GameScreen(
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        ScoreBoard(state.players, state.currentTurn, state.round, state.maxRounds)
-        BoardView(state.board, state.players, cells, viewModel::selectCell)
-        PlayerHand(me?.hand ?: emptyList(), piece, viewModel::selectPiece)
+        if (state.status == "WAITING") {
+            Text("Sala de partida", style = MaterialTheme.typography.titleLarge)
+            Text("Código de la sala: " + roomCode)
+            Text("Jugadores (" + state.players.size + "/4):")
+            for (player in state.players) {
+                Text("- " + player.name)
+            }
 
-        if (message != "") {
-            Text(message)
-        }
+            val isHost = state.players.isNotEmpty() && state.players[0].id == viewModel.myId
+            if (isHost) {
+                Button(
+                    onClick = viewModel::startGame,
+                    enabled = state.players.size >= 2,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Empezar partida")
+                }
+                if (state.players.size < 2) {
+                    Text("Esperando a otro jugador...")
+                }
+            } else {
+                Text("Esperando a que el anfitrión empiece la partida...")
+            }
+        } else {
+            ScoreBoard(state.players, state.currentTurn, state.round, state.maxRounds)
+            BoardView(state.board, state.players, cells, viewModel::selectCell)
+            PlayerHand(me?.hand ?: emptyList(), piece, viewModel::selectPiece)
 
-        GameControls(
-            canPlace = piece != null && cells.size == 2 && viewModel.isMyTurn(),
-            onPlace = viewModel::place,
-            onRotate = viewModel::rotate,
-            onCancel = viewModel::cancel
-        )
+            if (message != "") {
+                Text(message)
+            }
 
-        Button(
-            onClick = viewModel::drawPiece,
-            enabled = viewModel.canDraw(),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(if (state.pool.isEmpty()) "Pasar turno" else "Tomar ficha del pozo")
+            GameControls(
+                canPlace = piece != null && cells.size == 2 && viewModel.isMyTurn(),
+                onPlace = viewModel::place,
+                onRotate = viewModel::rotate,
+                onCancel = viewModel::cancel
+            )
+
+            Button(
+                onClick = viewModel::drawPiece,
+                enabled = viewModel.canDraw(),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(if (state.pool.isEmpty()) "Pasar turno" else "Tomar ficha del pozo")
+            }
         }
 
         OutlinedButton(

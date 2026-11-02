@@ -10,13 +10,11 @@ import kotlin.math.abs
 
 class GameEngine {
 
-    // Es true cuando el jugador coloca una ficha en un portal
     var extraTurn = false
 
     private val rowMoves = intArrayOf(-1, 1, 0, 0)
     private val colMoves = intArrayOf(0, 0, -1, 1)
 
-    // Crea las 25 casillas y asigna las casillas especiales.
     fun createBoard(): MutableList<Territory> {
         val board = mutableListOf<Territory>()
         for (row in 0..4) {
@@ -24,7 +22,6 @@ class GameEngine {
                 board.add(Territory(row, col))
             }
         }
-        // Posición en la lista = fila * 5 + columna.
         board[0].effect = TileEffect.BONUS
         board[24].effect = TileEffect.BONUS
         board[6].effect = TileEffect.TREASURE

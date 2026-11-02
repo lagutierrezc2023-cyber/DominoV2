@@ -10,7 +10,9 @@ import com.google.firebase.database.ValueEventListener
 
 class FirebaseGameService {
 
-    private val rooms = FirebaseDatabase.getInstance().getReference("rooms")
+    private val rooms = FirebaseDatabase
+        .getInstance("https://dominoconquest-a1460-default-rtdb.firebaseio.com")
+        .getReference("rooms")
     private var listenedRoom: DatabaseReference? = null
     private var listener: ValueEventListener? = null
 

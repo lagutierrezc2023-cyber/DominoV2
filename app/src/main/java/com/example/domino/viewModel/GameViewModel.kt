@@ -103,6 +103,19 @@ class GameViewModel(
         repository.saveGame(code, state)
     }
 
+    // Empieza la partida: reparte las fichas y pasa el estado a PLAYING
+    fun startGame() {
+        val state = _state.value
+        if (state.players.size < 2) return
+        val newState = engine.startGame(state.players)
+        repository.saveGame(code, newState)
+    }
+
+    // Vuelve a la sala de espera con los mismos jugadores
+    fun restart() {
+        repository.restartGame(code)
+    }
+
     fun leave() {
         repository.leaveGame(code, myId)
     }

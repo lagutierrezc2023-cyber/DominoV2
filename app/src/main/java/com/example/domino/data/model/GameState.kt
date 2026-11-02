@@ -9,7 +9,6 @@ data class GameState(
     val maxRounds: Int = 20,
     var status: String = "WAITING"
 ) {
-    // Casilla en esa fila y columna y null si queda fuera del tablero
     fun getTerritory(row: Int, col: Int): Territory? {
         return board.find { it.row == row && it.col == col }
     }

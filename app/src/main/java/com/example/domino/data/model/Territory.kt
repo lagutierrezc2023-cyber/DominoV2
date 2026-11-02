@@ -6,7 +6,7 @@ class Territory(
     var col: Int = 0,
     var effect: TileEffect = TileEffect.NONE,
     var ownerId: String = "",
-    var conquests: Int = 0, //La cantidad de fichas que han colocado aqui
+    var conquests: Int = 0,
     var number: Int = -1
 ) {
 
