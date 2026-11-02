@@ -32,7 +32,7 @@ fun AppNavigation() {
         startScreen = "lobby"
     }
 
-    NavHost(navController = navController, startDestination = startScreen) {
+    NavHost(navController = navController, startDestination = "login")  {
 
         composable("login") {
             LoginScreen(

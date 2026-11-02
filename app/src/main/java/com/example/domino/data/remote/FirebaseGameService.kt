@@ -1,5 +1,6 @@
 package com.example.domino.data.remote
 
+import android.util.Log
 import com.example.domino.data.model.GameState
 import com.example.domino.data.model.Room
 import com.google.firebase.database.DataSnapshot
@@ -28,7 +29,10 @@ class FirebaseGameService {
     fun getRoom(code: String, onResult: (Room?) -> Unit) {
         rooms.child(code).get()
             .addOnSuccessListener { onResult(it.getValue(Room::class.java)) }
-            .addOnFailureListener { onResult(null) }
+            .addOnFailureListener {
+                Log.e("Firebase", "getRoom falló: " + it.message)
+                onResult(null)
+            }
     }
 
     fun deleteRoom(code: String) {
